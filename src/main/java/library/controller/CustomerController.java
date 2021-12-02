@@ -14,6 +14,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 @Controller
@@ -94,5 +95,22 @@ public class CustomerController {
             ModelAndView modelAndView = new ModelAndView("customer/err-404");
             return modelAndView;
         }
+    }
+    @GetMapping("/login")
+    public ModelAndView showLoginUser() {
+        ModelAndView modelAndView = new ModelAndView("user/login");
+        modelAndView.addObject("user", new User());
+        return modelAndView;
+    }
+
+    @PostMapping("/logins")
+    public ModelAndView login(@Valid @ModelAttribute("user") User user, BindingResult bindingResult) {
+       new User().validate(user,bindingResult);
+        if (bindingResult.hasFieldErrors()) {
+            return new ModelAndView("user/login");
+        }
+        ModelAndView modelAndView = new ModelAndView("redirect:/customers");
+        modelAndView.addObject("user",user);
+        return modelAndView ;
     }
 }

@@ -11,6 +11,11 @@
     <title>$Title$</title>
   </head>
   <body>
-  <a href="http://localhost:8080/customers">HOME</a>
+  <center>
+    <h1>
+      <a href="http://localhost:8080/login">Login</a>
+    </h1>
+  </center>
+
   </body>
 </html>

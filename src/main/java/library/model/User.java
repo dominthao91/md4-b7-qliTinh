@@ -99,20 +99,15 @@ String password = user.getPassword();
         if (account.length()>20||account.length()<6){
             errors.rejectValue("account","account.length");
         }
-        if (!account.matches("/@([A-Za-z0-9])")){
+        if (!account.matches("(^[a-zA-Z_0-9]*$)")){
 errors.rejectValue("account","account.matches");
         }
         if (password.length()>20||password.length()<6){
             errors.rejectValue("password","password.length");
         }
 
-        if (!password.matches("^.*(?=.{8,})(?=..*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$\n"));
-        errors.rejectValue("password","password.matches");
-
-//        Ít nhất 8 ký tự
-//        Chứa ít nhất một chữ số
-//        Chứa ít nhất một ký tự alpha dưới và một ký tự alpha trên
-//        Chứa ít nhất một ký tự trong một tập hợp các ký tự đặc biệt ( @#%$^v.v.)
-//        Không chứa khoảng trắng, tab, v.v.
+        if (!password.matches("(^[a-zA-Z_0-9]*$)")) {
+            errors.rejectValue("password", "password.matches");
+        }
     }
 }

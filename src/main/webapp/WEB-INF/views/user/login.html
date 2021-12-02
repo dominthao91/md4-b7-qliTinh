@@ -8,15 +8,18 @@
 <body>
 <center>
     <h1>Hello Admin</h1>
-    <form method="post" action="/login" th:object="${user}">
+    <form method="post" action="#" th:action="@{/logins}" th:object="${user}">
     <table>
         <tr>
             <td>Account</td>
             <td><input type="text" th:field="*{account}"></td>
+            <td th:if="${#fields.hasErrors('account')}" th:errors="*{account}" style="color: red">Account Error</td>
         </tr>
         <tr>
             <td>Password</td>
-            <td><input type="text" th:field="*{password}"></td>
+            <td><input type="password" th:field="*{password}"></td>
+            <td th:if="${#fields.hasErrors('password')}"th:errors="*{password}" style="color: red">Password Error</td>
+
         </tr>
         <tr>
             <td><input type="submit" value="Login"></td>

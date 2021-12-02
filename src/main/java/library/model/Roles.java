@@ -12,16 +12,14 @@ public class Roles {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
-    private String admin;
-    private String user;
+    private String name;
 
     public Roles() {
     }
 
-    public Roles(Long id, String admin, String user) {
+    public Roles(Long id, String name) {
         this.id = id;
-        this.admin = admin;
-        this.user = user;
+        this.name = name;
     }
 
     public Long getId() {
@@ -32,19 +30,11 @@ public class Roles {
         this.id = id;
     }
 
-    public String getAdmin() {
-        return admin;
+    public String getName() {
+        return name;
     }
 
-    public void setAdmin(String admin) {
-        this.admin = admin;
-    }
-
-    public String getUser() {
-        return user;
-    }
-
-    public void setUser(String user) {
-        this.user = user;
+    public void setName(String name) {
+        this.name = name;
     }
 }
